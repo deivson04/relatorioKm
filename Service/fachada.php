@@ -28,15 +28,15 @@ class Fachada
 
 } 
 
-$dado = [
-    'localUm' => 'Local A',
-    'localDois' => 'Local B',
-    'qtdKm' => 120,
-    'data' => '2025-01-09',
-];
+// $dado = [
+//     'localUm' => 'Local A',
+//     'localDois' => 'Local B',
+//     'qtdKm' => 120,
+//     'data' => '2025-01-09',
+// ];
 
-$obj = new Fachada();
+// $obj = new Fachada();
 
-$obf = $obj->inserirRelatorio($dado);
+// $obf = $obj->inserirRelatorio($dado);
 
-print_r($obf);
+// print_r($obf);

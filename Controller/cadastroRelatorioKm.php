@@ -10,7 +10,7 @@ use Service\Fachada;
 
 class CadastroRelatorioKm 
 {
-    public function inserirRelatorio()
+    public function inserirRelatorio($dado)
     {
         
         // Verificando se o formulário foi enviado via POST
@@ -23,8 +23,8 @@ class CadastroRelatorioKm
                 'qtdKm' => $_POST['qtdKm'] ?? ''
             ];
             
-            // echo 'Chegou: ';
-            //print_r($dado); // Usando print_r para exibir o conteúdo do array
+             //echo 'Chegou: ';
+            print_r($dado); // Usando print_r para exibir o conteúdo do array
         }
            
         
@@ -41,9 +41,10 @@ class CadastroRelatorioKm
     
 
 
-// $f = new CadastroRelatorioKm();
+//  $f = new CadastroRelatorioKm();
 
-// $e = $f->inserirRelatorio();
+//  $e = $f->inserirRelatorio($dado);
+//  print_r($e);
 
 
 

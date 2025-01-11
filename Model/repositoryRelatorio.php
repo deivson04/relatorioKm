@@ -14,11 +14,20 @@ class RelatorioRepository
     {
         $db = new ConexaoDB();
 
-        $this->con = $db;
+        $this->con = $db->conectarBanco();
     }
 
     public function inserirRelatorio($dado)
     {
+        $obj = $dado->getLocalUm();
+        $obj = $dado->getLocalDois();
+        $obj = $dado->getQtdKm();
+        $obj = $dado->getData();
+        
+        
+        echo '<pre>';
+
+        //print_r($obj);
         return [
             'status' => 'sucesso',
             'mensagem' => 'Relatório salvo com sucesso!',
