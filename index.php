@@ -13,32 +13,32 @@
 
     <div class="container-fluid d-flex justify-content-center align-items-center full-height">
 
-        <form action="controller/cadastroRelatorioKm.php" method="POST" class="custom-width">
+        <form action="../Controller/cadastroRelatorioKm.php" method="POST" class="custom-width">
             <h1>Fomulario de KM:</h1>
             <div class="form-group">
                 <label>Data</label>
-                <input type="date" class="form-control" id="data" name="data">
+                <input type="date" class="form-control" id="data" name="data" required>
             </div>
 
             <div class="form-group">
                 <label>Local 1:</label>
-                <input type="text" class="form-control" id="localUm" name="localUm">
+                <input type="text" class="form-control" id="localUm" name="localUm" required>
             </div>
 
             <div class="form-group">
                 <label>Local 2:</label>
-                <input type="text" class="form-control" id="localDois" name="localDois">
+                <input type="text" class="form-control" id="localDois" name="localDois" required>
             </div>
 
             <div class="form-group">
                 <label>Quantidade de km:</label>
-                <input type="text" class="form-control" id="qtdKm" name="qtdKm">
+                <input type="text" class="form-control" id="qtdKm" name="qtdKm" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Guarda</button>
-           
-            
-           
+
+
+
         </form>
     </div>
 
@@ -53,4 +53,3 @@
 </body>
 
 </html>
-

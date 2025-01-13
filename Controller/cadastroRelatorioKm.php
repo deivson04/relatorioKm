@@ -4,49 +4,40 @@ namespace Controller;
 
 require_once '../Service/fachada.php';
 
-
-
 use Service\Fachada;
 
-class CadastroRelatorioKm 
+class CadastroRelatorioKm
 {
-    public function inserirRelatorio($dado)
+    public function inserirRelatorio($dadosFormulario)
     {
-        
-        // Verificando se o formulário foi enviado via POST
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Pegando os dados do formulário via POST
-            $dado = [
-                'data' => $_POST['data'] ?? '',
-                'localUm' => $_POST['localUm'] ?? '',
-                'localDois' => $_POST['localDois'] ?? '',
-                'qtdKm' => $_POST['qtdKm'] ?? ''
-            ];
-            
-             //echo 'Chegou: ';
-            print_r($dado); // Usando print_r para exibir o conteúdo do array
-        }
-           
-        
-        
-        
-        
-        
         $objetoRelatorio = new Fachada();
-        return $objetoRelatorio->inserirRelatorio($dado);
-        }
-        
+        return $objetoRelatorio->inserirRelatorio($dadosFormulario);
     }
+}
 
-    
+// Verificando se o formulário foi enviado via POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Pegando os dados do formulário via POST
+    $dadosFormulario = [
+        'data' => $_POST['data'] ?? '',
+        'localUm' => $_POST['localUm'] ?? '',
+        'localDois' => $_POST['localDois'] ?? '',
+        'qtdKm' => $_POST['qtdKm'] ?? ''
+    ];
 
+    $cadastro = new CadastroRelatorioKm();
+    $cadastro->inserirRelatorio($dadosFormulario);
+} else {
+    echo 'Metodo não permitido';
+}
 
-//  $f = new CadastroRelatorioKm();
+$objetoRelatorio = new Fachada();
+$resultado = $objetoRelatorio->inserirRelatorio($dadosFormulario);
 
-//  $e = $f->inserirRelatorio($dado);
-//  print_r($e);
+if ($resultado) {
+    echo 'Relatório cadastrado com sucesso!';
+} else {
+    echo "Erro ao cadastrar o relatório. $resultado.";
+}
 
-
-
-
-
+echo "<br><br><a href='../index.php'>Voltar ao formulário</a>";
