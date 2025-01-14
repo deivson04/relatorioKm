@@ -8,15 +8,27 @@ use Service\Fachada;
 
 class CadastroRelatorioKm
 {
+
     public function inserirRelatorio($dadosFormulario)
     {
-        $objetoRelatorio = new Fachada();
-        return $objetoRelatorio->inserirRelatorio($dadosFormulario);
+        $fachada = new Fachada();
+        $facade =  $fachada->inserirRelatorio($dadosFormulario);
+
+        if ($facade) {
+            echo 'Relatório cadastrado com sucesso!';
+        } else {
+            echo "Erro ao cadastrar o relatório. $facade.";
+        }
+
+        echo "<br><br><a href='../index.php'>Voltar ao formulário</a>";
+
+        return $facade;
     }
 }
 
 // Verificando se o formulário foi enviado via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     // Pegando os dados do formulário via POST
     $dadosFormulario = [
         'data' => $_POST['data'] ?? '',
@@ -30,14 +42,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo 'Metodo não permitido';
 }
-
-$objetoRelatorio = new Fachada();
-$resultado = $objetoRelatorio->inserirRelatorio($dadosFormulario);
-
-if ($resultado) {
-    echo 'Relatório cadastrado com sucesso!';
-} else {
-    echo "Erro ao cadastrar o relatório. $resultado.";
-}
-
-echo "<br><br><a href='../index.php'>Voltar ao formulário</a>";
