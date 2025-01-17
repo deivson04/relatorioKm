@@ -1,13 +1,16 @@
-.custom-width {
-    max-width: 400px;
-    width: 100%;
+body {
+    background-color: #e3f2fd;
+
 }
 
-.full-height {
-    height: 80vh; 
-  }
+.custom-bg {
+    background-color: #e3f2fd;
+    /* background: linear-gradient(45deg, #6a11cb, #2575fc); */
+    min-height: 100vh;
+    color: #000000;
+}
 
-h3 {
-    color: #1E90FF;
-    
+.custom-width {
+    max-width: 500px;
+    width: 100%;
 }
