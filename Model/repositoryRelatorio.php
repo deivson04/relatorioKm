@@ -6,6 +6,8 @@ require_once 'conexao.php';
 
 use Model\ConexaoDB;
 
+use PDO;
+
 class RelatorioRepository
 {
     protected $con;
@@ -39,5 +41,19 @@ class RelatorioRepository
         $stmt->execute();
 
         return $stmt;
+    }
+
+    public function buscarRelatorio()
+    {
+        $sql = "Select
+                 *
+                FROM km 
+                WHERE deleted_at is null";
+
+        $stmt = $this->con->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

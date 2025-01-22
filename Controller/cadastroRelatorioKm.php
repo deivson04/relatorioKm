@@ -8,16 +8,16 @@ use Service\Fachada;
 
 class CadastroRelatorioKm
 {
-        private $fachada;
+    private $fachada;
 
     public function __construct()
     {
         $this->fachada = new Fachada();
     }
-    
+
     public function inserirRelatorio($dadosFormulario)
     {
-        
+
         $facade =  $this->fachada->inserirRelatorio($dadosFormulario);
 
         if ($facade) {
@@ -29,6 +29,11 @@ class CadastroRelatorioKm
         echo "<br><br><a href='../index.php'>Voltar ao formulário</a>";
 
         return $facade;
+    }
+
+    public function buscarRelatorio()
+    {
+        return $this->fachada->buscarRelatorio();
     }
 }
 
@@ -45,6 +50,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $cadastro = new CadastroRelatorioKm();
     $cadastro->inserirRelatorio($dadosFormulario);
-} else {
-    echo 'Metodo não permitido';
-}
+} 
+

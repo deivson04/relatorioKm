@@ -24,4 +24,10 @@ class Fachada
         $repository = new RelatorioRepository();
         return $repository->inserirRelatorio($dadosFormulario);
     }
+
+    public function buscarRelatorio()
+    {
+        $repository = new RelatorioRepository();
+        return $repository->buscarRelatorio();
+    }
 }
