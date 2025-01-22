@@ -8,11 +8,17 @@ use Service\Fachada;
 
 class CadastroRelatorioKm
 {
+        private $fachada;
 
+    public function __construct()
+    {
+        $this->fachada = new Fachada();
+    }
+    
     public function inserirRelatorio($dadosFormulario)
     {
-        $fachada = new Fachada();
-        $facade =  $fachada->inserirRelatorio($dadosFormulario);
+        
+        $facade =  $this->fachada->inserirRelatorio($dadosFormulario);
 
         if ($facade) {
             echo 'Relatório cadastrado com sucesso!';
