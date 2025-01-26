@@ -25,9 +25,30 @@ class Fachada
         return $repository->inserirRelatorio($dadosFormulario);
     }
 
+    public function atualizarRelatorio($dadosFormulario)
+    {
+        $dadosFormulario = new RelatorioDeKm();
+
+        $dadosFormulario->setIdKm($_POST['idKm']);
+        $dadosFormulario->setLocalUm($_POST['localUm']);
+        $dadosFormulario->setLocalDois($_POST['localDois']);
+        $dadosFormulario->setQtdKm($_POST['qtdKm']);
+        $dadosFormulario->setData($_POST['data']);
+
+        $repository = new RelatorioRepository();
+        return $repository->atualizarRelatorio($dadosFormulario);
+    }
+
     public function buscarRelatorio()
     {
         $repository = new RelatorioRepository();
         return $repository->buscarRelatorio();
+    }
+
+    public function buscarId($dadosFormulario)
+    {
+
+        $repository = new RelatorioRepository();
+        return $repository->buscarId($dadosFormulario);
     }
 }

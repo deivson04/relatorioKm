@@ -38,7 +38,7 @@
 
                 <button type="submit" class="btn btn-primary  w-100">Guarda</button><br><br>
 
-                <a href="view/home.php" class="btn btn-primary  w-100">Voltar</a>
+                <a href="view/home.php" class="btn btn-primary  w-100">Dashboard</a>
 
 
 

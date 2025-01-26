@@ -8,6 +8,7 @@ use Model\ConexaoDB;
 
 use PDO;
 
+
 class RelatorioRepository
 {
     protected $con;
@@ -43,9 +44,55 @@ class RelatorioRepository
         return $stmt;
     }
 
+    public function atualizarRelatorio($dadosFormulario)
+    {
+        $idKm = $dadosFormulario->getIdKm();
+        $localUm = $dadosFormulario->getLocalUm();
+        $localDois = $dadosFormulario->getLocalDois();
+        $qtdKm = $dadosFormulario->getQtdKm();
+        $data = $dadosFormulario->getData();
+
+        $sql = "UPDATE km
+                SET localUm = :localUm, localDois = :localDois, qtdKm = :qtdKm, data = :data
+                WHERE idKm = :idKm";
+
+        $stmt = $this->con->prepare($sql);
+
+        $stmt->bindParam(":localUm", $localUm);
+        $stmt->bindParam(":localDois", $localDois);
+        $stmt->bindParam(":qtdKm", $qtdKm);
+        $stmt->bindParam(":data", $data);
+        $stmt->bindParam(":idKm", $idKm);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function buscarId($dadosFormulario)
+    {
+
+        $idKm = $dadosFormulario->getIdKm();
+
+
+        $sql = "SELECT
+                  *  
+                FROM km
+                WHERE idKm = :idKm";
+
+        $stmt = $this->con->prepare($sql);
+
+        $stmt->bindParam(":idKm", $idKm);
+
+        $stmt->execute();
+
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function buscarRelatorio()
     {
-        $sql = "Select
+        $sql = "SELECT
                  *
                 FROM km 
                 WHERE deleted_at is null";

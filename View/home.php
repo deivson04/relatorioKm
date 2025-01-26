@@ -1,10 +1,10 @@
 <?php
 
-require_once '../Controller/cadastroRelatorioKm.php';
+require_once '../Controller/relatoriosController.php';
 
-use Controller\CadastroRelatorioKm;
+use Controller\RelatorioController;
 
-$buscarRelatorio = new CadastroRelatorioKm();
+$buscarRelatorio = new RelatorioController();
 
 $buscar = $buscarRelatorio->buscarRelatorio($_GET);
 // print_r($buscar);
@@ -47,8 +47,8 @@ $buscar = $buscarRelatorio->buscarRelatorio($_GET);
                         <td><?= $dados['localDois']; ?></td>
                         <td><?= $dados['qtdKm']; ?></td>
                         <td><?= $dados['data']; ?></td>
-                        <td><a href="atualizar.php?id=<?= $dados['idKm']; ?>" class="btn btn-primary">Atualizar</a></td>
-                        <td><a href="deletar.php?id=<?= $dados['idKm']; ?>" class="btn btn-danger">Deletar</a></td>
+                        <td><a href="atualizar.php?idKm=<?= $dados['idKm']; ?>" class="btn btn-primary">Atualizar</a></td>
+                        <td><a href="deletar.php?idKm=<?= $dados['idKm']; ?>" class="btn btn-danger">Deletar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
