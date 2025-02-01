@@ -103,4 +103,23 @@ class RelatorioRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function deleteRelatorio($dadosFormulario)
+    {
+        $idKm = $dadosFormulario->getIdKm();
+
+        $date = date("Y-m-d H:i:s");
+
+        $sql = "UPDATE km
+                SET  deleted_at = :deleted_at
+                WHERE idKm = :idKm";
+        $stmt = $this->con->prepare($sql);
+        
+        $stmt->bindParam(":idKm", $idKm);
+        $stmt->bindParam(":deleted_at", $date);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
 }

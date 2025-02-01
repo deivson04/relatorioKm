@@ -46,9 +46,9 @@ $buscar = $buscarRelatorio->buscarRelatorio($_GET);
                         <th><?= $dados['localUm']; ?></th>
                         <td><?= $dados['localDois']; ?></td>
                         <td><?= $dados['qtdKm']; ?></td>
-                        <td><?= $dados['data']; ?></td>
+                        <td><?= date('d/m/Y',  strtotime($dados['data'])); ?></td>
                         <td><a href="atualizar.php?idKm=<?= $dados['idKm']; ?>" class="btn btn-primary">Atualizar</a></td>
-                        <td><a href="deletar.php?idKm=<?= $dados['idKm']; ?>" class="btn btn-danger">Deletar</a></td>
+                        <td><a href="../Controller/deleteRelatorio.php?idKm=<?= $dados['idKm']; ?>" class="btn btn-danger">Deletar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

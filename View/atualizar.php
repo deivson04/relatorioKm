@@ -1,7 +1,5 @@
 <?php
-// echo "<pre>";
-// var_dump($_GET);
-// die;
+
 require_once '../Controller/relatoriosController.php';
 require_once '../Objeto/relatorioKm.php';
 

@@ -51,4 +51,11 @@ class Fachada
         $repository = new RelatorioRepository();
         return $repository->buscarId($dadosFormulario);
     }
+
+    public function deleteRelatorio($dadosFormulario)
+    {
+
+        $repository = new RelatorioRepository();
+        return $repository->deleteRelatorio($dadosFormulario);
+    }
 }
