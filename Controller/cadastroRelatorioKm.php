@@ -36,12 +36,12 @@ class CadastroRelatorioKm
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Pegando os dados do formulário via POST
-    $dadosFormulario = [
-        'data' => $_POST['data'] ?? '',
-        'localUm' => $_POST['localUm'] ?? '',
-        'localDois' => $_POST['localDois'] ?? '',
-        'qtdKm' => $_POST['qtdKm'] ?? ''
-    ];
+    $dadosFormulario  ( 
+         $_POST['data'] ?? '',
+         $_POST['localUm'] ?? '',
+         $_POST['localDois'] ?? '',
+         $_POST['qtdKm'] ?? ''
+);
 
     $cadastro = new CadastroRelatorioKm();
     $cadastro->inserirRelatorio($dadosFormulario);
