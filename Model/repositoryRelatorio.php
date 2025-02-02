@@ -114,7 +114,7 @@ class RelatorioRepository
                 SET  deleted_at = :deleted_at
                 WHERE idKm = :idKm";
         $stmt = $this->con->prepare($sql);
-        
+
         $stmt->bindParam(":idKm", $idKm);
         $stmt->bindParam(":deleted_at", $date);
 
