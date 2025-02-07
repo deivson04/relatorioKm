@@ -103,11 +103,31 @@ class RelatorioRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function dataInicio($data)
+    {
+        $dataInicio = $data->getData();
+
+
+        $sql = "SELECT
+                 *
+                FROM km 
+                WHERE deleted_at is null AND data = :data";
+       
+        $stmt = $this->con->prepare($sql);
+
+        $stmt->bindParam(":data", $dataInicio);
+        
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function deleteRelatorio($dadosFormulario)
     {
         $idKm = $dadosFormulario->getIdKm();
 
+        date_default_timezone_set('America/Recife');
         $date = date("Y-m-d H:i:s");
 
         $sql = "UPDATE km

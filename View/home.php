@@ -7,8 +7,12 @@ use Controller\RelatorioController;
 $buscarRelatorio = new RelatorioController();
 
 $buscar = $buscarRelatorio->buscarRelatorio($_GET);
-// print_r($buscar);
 
+
+$dataInicio = $buscarRelatorio->dataInicio($_GET);
+
+
+  
 
 
 ?>
@@ -32,6 +36,11 @@ $buscar = $buscarRelatorio->buscarRelatorio($_GET);
             <a href="gerarKm.php" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover custom-font">Gerar km</a>
         </div>
     </div>
+
+    <form  class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="date" name="dataInicio" value="<?= isset($_GET['dataInicio']) ? $_GET['dataInicio'] : date('Y-m-d') ?>" aria-label="Pesquisar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
 
     <div class="container">
         <table class="table table-striped table-bordered table-hover mt-4">

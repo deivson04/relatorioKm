@@ -58,4 +58,15 @@ class Fachada
         $repository = new RelatorioRepository();
         return $repository->deleteRelatorio($dadosFormulario);
     }
+
+    public function dataInicio($data)
+    {
+               
+        $data = new RelatorioDeKm();
+
+        $data->setData($_GET['dataInicio']);
+        
+        $repository = new RelatorioRepository();
+        return $repository->dataInicio($data);
+    }
 }

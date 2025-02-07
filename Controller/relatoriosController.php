@@ -24,4 +24,9 @@ class RelatorioController
     {
         return $this->fachada->buscarId($dadosFormulario);
     }
+
+    public function dataInicio($data)
+    {
+        return $this->fachada->dataInicio($data);
+    }
 }
