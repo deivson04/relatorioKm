@@ -94,10 +94,12 @@ class RelatorioRepository
     {
         $dataInicio = $data->getData();
 
-        $sql = "SELECT
-                 *
-                FROM km 
-                WHERE deleted_at is null AND :data is null OR data = :data";
+        $sql = "SELECT *
+        FROM km
+        WHERE deleted_at IS NULL 
+            AND (:data IS NULL OR data = :data)
+        ORDER BY data DESC";
+        
 
         $stmt = $this->con->prepare($sql);
 
