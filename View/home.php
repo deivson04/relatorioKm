@@ -1,20 +1,28 @@
 <?php
 
 require_once '../Controller/relatoriosController.php';
+require_once '../Objeto/RelatorioKm.php';
 
 use Controller\RelatorioController;
+use Objeto\RelatorioDeKm;
+
 
 $buscarRelatorio = new RelatorioController();
 
-$buscar = $buscarRelatorio->buscarRelatorio($_GET);
+$data = new RelatorioDeKm();
 
+if (isset($_GET['dataInicio']) && (!empty($_GET['dataInicio']))) {
+    
+    $data->setData($_GET['dataInicio']);
 
-$dataInicio = $buscarRelatorio->dataInicio($_GET);
+    $buscar = $buscarRelatorio->buscarRelatorio($data);
+} else {
+
+    $buscar = $buscarRelatorio->buscarRelatorio($data);
+}
 
 
   
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,7 +46,7 @@ $dataInicio = $buscarRelatorio->dataInicio($_GET);
     </div>
 
     <form  class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="date" name="dataInicio" value="<?= isset($_GET['dataInicio']) ? $_GET['dataInicio'] : date('Y-m-d') ?>" aria-label="Pesquisar">
+      <input class="form-control mr-sm-2" type="date" name="dataInicio" value="<?= $buscar ?>" aria-label="Pesquisar">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
     </form>
 

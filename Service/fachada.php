@@ -39,10 +39,10 @@ class Fachada
         return $repository->atualizarRelatorio($dadosFormulario);
     }
 
-    public function buscarRelatorio()
+    public function buscarRelatorio($data)
     {
         $repository = new RelatorioRepository();
-        return $repository->buscarRelatorio();
+        return $repository->buscarRelatorio($data);
     }
 
     public function buscarId($dadosFormulario)
@@ -57,16 +57,5 @@ class Fachada
 
         $repository = new RelatorioRepository();
         return $repository->deleteRelatorio($dadosFormulario);
-    }
-
-    public function dataInicio($data)
-    {
-               
-        $data = new RelatorioDeKm();
-
-        $data->setData($_GET['dataInicio']);
-        
-        $repository = new RelatorioRepository();
-        return $repository->dataInicio($data);
     }
 }
