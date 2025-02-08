@@ -15,13 +15,14 @@ class RelatorioController
         $this->fachada = new Fachada();
     }
 
-    public function buscarRelatorio()
+    public function buscarRelatorio($data)
     {
-        return $this->fachada->buscarRelatorio();
+        return $this->fachada->buscarRelatorio($data);
     }
 
     public function buscarId($dadosFormulario)
     {
         return $this->fachada->buscarId($dadosFormulario);
     }
+
 }

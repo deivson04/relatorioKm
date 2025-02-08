@@ -14,3 +14,11 @@ body {
     max-width: 500px;
     width: 100%;
 }
+
+.custom-font {
+    font-size: 1.3rem;
+}
+
+.custom-spacing {
+    margin-right: 20px;
+}

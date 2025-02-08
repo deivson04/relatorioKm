@@ -39,10 +39,10 @@ class Fachada
         return $repository->atualizarRelatorio($dadosFormulario);
     }
 
-    public function buscarRelatorio()
+    public function buscarRelatorio($data)
     {
         $repository = new RelatorioRepository();
-        return $repository->buscarRelatorio();
+        return $repository->buscarRelatorio($data);
     }
 
     public function buscarId($dadosFormulario)

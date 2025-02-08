@@ -90,23 +90,29 @@ class RelatorioRepository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function buscarRelatorio()
+    public function buscarRelatorio($data)
     {
+        $dataInicio = $data->getData();
+
         $sql = "SELECT
                  *
                 FROM km 
-                WHERE deleted_at is null";
+                WHERE deleted_at is null AND :data is null OR data = :data";
 
         $stmt = $this->con->prepare($sql);
+
+        $stmt->bindParam(":data", $dataInicio);
 
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     public function deleteRelatorio($dadosFormulario)
     {
         $idKm = $dadosFormulario->getIdKm();
+
+        date_default_timezone_set('America/Recife');
 
         $date = date("Y-m-d H:i:s");
 
@@ -114,7 +120,7 @@ class RelatorioRepository
                 SET  deleted_at = :deleted_at
                 WHERE idKm = :idKm";
         $stmt = $this->con->prepare($sql);
-        
+
         $stmt->bindParam(":idKm", $idKm);
         $stmt->bindParam(":deleted_at", $date);
 

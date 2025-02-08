@@ -1,8 +1,7 @@
 <?php
 
 namespace Controller;
-// var_dump($_GET);
-// die;
+
 require_once '../Service/fachada.php';
 require_once '../Objeto/relatorioKm.php';
 
@@ -38,4 +37,4 @@ class DeleteRelatorioKm
 
         return $facade;
     }
-}    
+}
