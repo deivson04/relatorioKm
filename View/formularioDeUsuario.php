@@ -14,9 +14,9 @@
     <div class="container-fluid d-flex justify-content-center align-items-center full-height custom-bg">
         <div class="border p-4 rounded shadow-sm custom-width">
 
-            <form action="Controller/cadastroDeUsuario.php" method="POST" class="custom-width">
+            <form action="../Controller/cadastroDeUsuario.php" method="POST" class="custom-width">
                 <h1 class="text-center mb-4">Cadastro de Usuario</h1>
-                
+
                 <div class="form-group">
                     <label>Nome:</label>
                     <input type="nome" class="form-control" id="nome" name="nome" required>
@@ -34,7 +34,7 @@
 
                 <button type="submit" class="btn btn-primary  w-100">Guarda</button><br><br>
 
-            <p class="form-text mt-3">Já tem uma conta? <a href="../index.php">Login aqui</a></p>
+                <p class="form-text mt-3">Já tem uma conta? <a href="../index.php">Login aqui</a></p>
 
 
 

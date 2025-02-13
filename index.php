@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" id="senha" name="senha" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary  w-100">Entra</button><br><br>
+                <button type="submit" class="btn btn-primary  w-100">Entrar</button><br><br>
 
             <p class="form-text mt-3">Ainda não tem uma conta? <a href="view/formularioDeUsuario.php">Cadastre-se aqui</a></p>
 
