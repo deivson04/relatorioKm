@@ -4,10 +4,12 @@ namespace Service;
 
 require_once '../Objeto/RelatorioKm.php';
 require_once '../Model/repositoryRelatorio.php';
+require_once '../Model/repositoryUsuario.php';
 
 
 use Model\RelatorioRepository;
 use Objeto\RelatorioDeKm;
+use Model\UsuarioRepository;
 
 
 class Fachada
@@ -57,5 +59,13 @@ class Fachada
 
         $repository = new RelatorioRepository();
         return $repository->deleteRelatorio($dadosFormulario);
+    }
+
+    //Usuario
+
+    public function inserirUsuario($usuario)
+    {
+        $repository = new UsuarioRepository();
+        return $repository->inserirUsuario($usuario);
     }
 }

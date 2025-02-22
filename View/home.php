@@ -40,7 +40,7 @@ if (isset($_GET['dataInicio']) && (!empty($_GET['dataInicio']))) {
     <div class="container-fluid d-flex flex-column align-items-center mt-3">
         <h1 class="mb-3">Relatório de KM</h1>
         <div class="d-flex">
-            <a href="../index.php" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover custom-font custom-spacing">Registra km</a>
+            <a href="formularioDeRelatorio.php" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover custom-font custom-spacing">Registra km</a>
             <a href="gerarKm.php" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover custom-font">Gerar km</a>
         </div>
     </div>
