@@ -44,9 +44,9 @@ class CadastroRelatorioKm
             echo "Erro ao cadastrar o relatório. $facade.";
         }
 
-        echo "<br><br><a href='../index.php'>Voltar ao formulário</a>";
+        echo "<br><br><a href='../view/home.php'>Voltar ao formulário</a>";
 
-        return $facade;
+       
     }
 }
 

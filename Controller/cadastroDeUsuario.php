@@ -39,6 +39,6 @@ class CadastroDeUsuario
             echo 'Usuario não cadastrado';
         }
         echo "<br><br><a href='../index.php'>Voltar ao login</a>";
-        return $facade;
+       
     }
 }
