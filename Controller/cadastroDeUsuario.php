@@ -16,21 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario->setNome($_POST['nome'] ?? '');
     $usuario->setEmail($_POST['email'] ?? '');
     $usuario->setSenha($_POST['senha'] ?? '');
-}
-$fachada = new Fachada();
-$emailExistente = $fachada->buscarEmail($email);
-
-if (isset($emailExistente)) {
-
-    echo 'usuário cadastrado com email existente';
-} else {
 
     $fachada = new Fachada();
-    $cadastro = $fachada->inserirUsuario($usuario);
+    $emailExistente = $fachada->buscarEmail($usuario->getEmail());
+
+    if ($emailExistente) {
+
+        echo 'Usuário já cadastrado com esse e-mail';
+    } else {
+        $cadastro = $fachada->inserirUsuario($usuario);
+
+        if ($cadastro) {
+            echo 'Usuário cadastrado com sucesso';
+        } else {
+            echo 'Usuário cadastrado';
+        }
+    }
+
+    echo "<br><br><a href='../index.php'>Voltar ao login</a>";
 }
-if (isset($cadastro)) {
-    echo 'Usuário cadastrado com sucesso';
-} else {
-    echo 'Usuário cadastrado';
-}
-echo "<br><br><a href='../index.php'>Voltar ao login</a>";
