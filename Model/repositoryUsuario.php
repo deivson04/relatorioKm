@@ -38,4 +38,28 @@ class UsuarioRepository
 
         return $stmt;
     }
+
+    public function buscarEmail($email)
+    {
+        
+        $value = $email->getEmail();
+
+        $sql = "SELECT emails
+                FROM usuarios
+                WHERE email = :email";
+        
+        $stmt = $this->con->prepare($sql);
+        
+        $stmt->bindParam(":email", $value);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;    
+        }
+
+    }
 }
+

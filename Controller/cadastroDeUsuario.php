@@ -17,28 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario->setEmail($_POST['email'] ?? '');
     $usuario->setSenha($_POST['senha'] ?? '');
 }
-$cadastro = new CadastroDeUsuario();
-$cadastro->inserirUsuario($usuario);
+$fachada = new Fachada();
+$emailExistente = $fachada->buscarEmail($email);
 
-class CadastroDeUsuario
-{
-    private $fachada;
+if (isset($emailExistente)) {
 
-    public function __construct()
-    {
-        $this->fachada = new Fachada();
-    }
+    echo 'usuário cadastrado com email existente';
+} else {
 
-    public function inserirUsuario($usuario)
-    {
-        $facade = $this->fachada->inserirUsuario($usuario);
-
-        if (isset($facade)) {
-            echo 'Usuario cadastrado com sucesso';
-        } else {
-            echo 'Usuario não cadastrado';
-        }
-        echo "<br><br><a href='../index.php'>Voltar ao login</a>";
-       
-    }
+    $fachada = new Fachada();
+    $cadastro = $fachada->inserirUsuario($usuario);
 }
+if (isset($cadastro)) {
+    echo 'Usuário cadastrado com sucesso';
+} else {
+    echo 'Usuário cadastrado';
+}
+echo "<br><br><a href='../index.php'>Voltar ao login</a>";

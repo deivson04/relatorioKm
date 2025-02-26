@@ -2,41 +2,23 @@
 
 namespace Service;
 
-require_once '../Objeto/RelatorioKm.php';
 require_once '../Model/repositoryRelatorio.php';
 require_once '../Model/repositoryUsuario.php';
 
-
-use Model\RelatorioRepository;
-use Objeto\RelatorioDeKm;
 use Model\UsuarioRepository;
+use Model\RelatorioRepository;
 
 
 class Fachada
 {
     public function inserirRelatorio($dadosFormulario)
     {
-        $dadosFormulario = new RelatorioDeKm();
-
-        $dadosFormulario->setLocalUm($_POST['localUm']);
-        $dadosFormulario->setLocalDois($_POST['localDois']);
-        $dadosFormulario->setQtdKm($_POST['qtdKm']);
-        $dadosFormulario->setData($_POST['data']);
-
         $repository = new RelatorioRepository();
         return $repository->inserirRelatorio($dadosFormulario);
     }
 
     public function atualizarRelatorio($dadosFormulario)
     {
-        $dadosFormulario = new RelatorioDeKm();
-
-        $dadosFormulario->setIdKm($_POST['idKm']);
-        $dadosFormulario->setLocalUm($_POST['localUm']);
-        $dadosFormulario->setLocalDois($_POST['localDois']);
-        $dadosFormulario->setQtdKm($_POST['qtdKm']);
-        $dadosFormulario->setData($_POST['data']);
-
         $repository = new RelatorioRepository();
         return $repository->atualizarRelatorio($dadosFormulario);
     }
@@ -67,5 +49,11 @@ class Fachada
     {
         $repository = new UsuarioRepository();
         return $repository->inserirUsuario($usuario);
+    }
+
+    public function buscarEmail($email)
+    {
+        $repository = new UsuarioRepository();
+        return $repository->buscarEmail($email);
     }
 }
