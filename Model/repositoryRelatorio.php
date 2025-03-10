@@ -8,7 +8,6 @@ use Model\ConexaoDB;
 
 use PDO;
 
-
 class RelatorioRepository
 {
     protected $con;
@@ -23,21 +22,32 @@ class RelatorioRepository
     public function inserirRelatorio($dadosFormulario)
     {
 
+        if (isset($_SESSION['idUsuario'])) {
+            $idUsuario = $_SESSION['idUsuario'];
+        } else {
+
+            die('Usuário não autenticado ou sessão expirada.');
+        }
+
         $localUm = $dadosFormulario->getLocalUm();
         $localDois = $dadosFormulario->getLocalDois();
         $qtdKm = $dadosFormulario->getQtdKm();
         $data = $dadosFormulario->getData();
 
-        $sql = "INSERT INTO km (localUm, localDois, qtdKm, data) 
-                      VALUES 
-             (:localUm, :localDois, :qtdKm, :data)";
 
+
+        $sql = "INSERT INTO km (localUm, localDois, qtdKm, data, idUsuario) 
+                      VALUES 
+             (:localUm, :localDois, :qtdKm, :data, :idUsuario)";
+        //  var_dump($sql);
+        //  die;
         $stmt = $this->con->prepare($sql);
 
         $stmt->bindParam(":localUm", $localUm);
         $stmt->bindParam(":localDois", $localDois);
         $stmt->bindParam(":qtdKm", $qtdKm);
         $stmt->bindParam(":data", $data);
+        $stmt->bindParam(":idUsuario", $idUsuario);
 
         $stmt->execute();
 
@@ -93,23 +103,32 @@ class RelatorioRepository
     public function buscarRelatorio($data)
     {
         $dataInicio = $data->getData();
+        $idUsuario = $data->getIdUsuario();
 
-        $sql = "SELECT *
-        FROM km
-        WHERE deleted_at IS NULL 
-            AND (:data IS NULL OR data = :data)
-        ORDER BY data DESC";
-        
+        // $sql = "SELECT *
+        // FROM km 
+        // WHERE deleted_at IS NULL 
+        //     AND (:data IS NULL OR data = :data)
+        // ORDER BY data DESC";
+
+        $sql = "SELECT u.idUsuario, k.localUm, k.localDois, k.qtdKm, k.data
+        FROM km k
+        INNER JOIN usuarios u ON k.idUsuario = u.idUsuario
+        WHERE u.idUsuario = :idUsuario
+        AND k.deleted_at IS NULL
+        AND (:data IS NULL OR k.data = :data)
+        ORDER BY k.data DESC";
 
         $stmt = $this->con->prepare($sql);
 
         $stmt->bindParam(":data", $dataInicio);
+        $stmt->bindParam(":idUsuario", $idUsuario);
 
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     public function deleteRelatorio($dadosFormulario)
     {
         $idKm = $dadosFormulario->getIdKm();

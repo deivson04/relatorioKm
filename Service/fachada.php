@@ -56,4 +56,11 @@ class Fachada
         $repository = new UsuarioRepository();
         return $repository->buscarEmail($email);
     }
+
+    public function buscarLogin($login)
+    {
+        
+        $repository = new UsuarioRepository();
+        return $repository->buscarLogin($login);
+    }
 }
