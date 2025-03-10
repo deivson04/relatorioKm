@@ -14,7 +14,7 @@
     <div class="container-fluid d-flex justify-content-center align-items-center full-height custom-bg">
         <div class="border p-4 rounded shadow-sm custom-width">
 
-            <form action="Controller/cadastroRelatorioKm.php" method="POST" class="custom-width">
+            <form action="Controller/loginUsuario.php" method="POST" class="custom-width">
                 <h1 class="text-center mb-4">Login</h1>
                 <div class="form-group">
                     <label>Email:</label>

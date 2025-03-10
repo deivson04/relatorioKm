@@ -39,6 +39,24 @@ class UsuarioRepository
         return $stmt;
     }
 
+    public function buscarLogin($login)
+    {
+        $email = $login->getEmail();
+        $senha = $login->getSenha();
+
+        $sql = "SELECT idUsuario ,email, nome, senha
+                FROM usuarios
+                WHERE email = :email AND senha = :senha";
+        $stmt = $this->con->prepare($sql);
+        
+        $stmt->bindParam("email", $email);
+        $stmt->bindParam("senha", $senha);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function buscarEmail($email)
     {
 

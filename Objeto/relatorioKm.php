@@ -10,6 +10,7 @@ class RelatorioDeKm
     private $localDois;
     private $qtdKm;
     private $data;
+    private $idUsuario;
 
 
 public function getIdKm()
@@ -37,6 +38,11 @@ public function getData()
     return $this->data;
 }
 
+public function getIdUsuario()
+{
+    return $this->idUsuario;
+}
+
 // Metodo set
 
 public function setIdKm($idKm)
@@ -62,6 +68,11 @@ public function setQtdKm($qtdKm)
 public function setData($data)
 {
     $this->data = $data;
+}
+
+public function setIdUsuario($idUsuario)
+{
+    $this->data = $idUsuario;
 }
 
 
