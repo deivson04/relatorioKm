@@ -3,7 +3,7 @@
 namespace Objeto;
 
 
-class RelatorioDeKm 
+class RelatorioDeKm
 {
     private $idKm;
     private $localUm;
@@ -13,74 +13,65 @@ class RelatorioDeKm
     private $idUsuario;
 
 
-public function getIdKm()
-{
-    return $this->idKm;
-}
+    public function getIdKm()
+    {
+        return $this->idKm;
+    }
 
-public function getLocalUm()
-{
-    return $this->localUm;
-}
+    public function getLocalUm()
+    {
+        return $this->localUm;
+    }
 
-public function getLocalDois()
-{
-    return $this->localDois;
-}
+    public function getLocalDois()
+    {
+        return $this->localDois;
+    }
 
-public function getQtdKm()
-{
-    return $this->qtdKm;
-}
+    public function getQtdKm()
+    {
+        return $this->qtdKm;
+    }
 
-public function getData()
-{
-    return $this->data;
-}
+    public function getData()
+    {
+        return $this->data;
+    }
 
-public function getIdUsuario()
-{
-    return $this->idUsuario;
-}
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
 
-// Metodo set
+    // Metodo set
 
-public function setIdKm($idKm)
-{
-    $this->idKm = $idKm;
-}
+    public function setIdKm($idKm)
+    {
+        $this->idKm = $idKm;
+    }
 
-public function setLocalUm($localUm)
-{
-    $this->localUm = $localUm;
-}
+    public function setLocalUm($localUm)
+    {
+        $this->localUm = $localUm;
+    }
 
-public function setLocalDois($localDois)
-{
-    $this->localDois = $localDois;
-}
+    public function setLocalDois($localDois)
+    {
+        $this->localDois = $localDois;
+    }
 
-public function setQtdKm($qtdKm)
-{
-    $this->qtdKm = $qtdKm;
-}
+    public function setQtdKm($qtdKm)
+    {
+        $this->qtdKm = $qtdKm;
+    }
 
-public function setData($data)
-{
-    $this->data = $data;
-}
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
 
-public function setIdUsuario($idUsuario)
-{
-    $this->data = $idUsuario;
-}
-
-
-
-
-
-
-
-
-
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+    }
 }

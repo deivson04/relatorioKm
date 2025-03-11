@@ -1,6 +1,8 @@
 <?php
 
 namespace Model;
+// var_dump($_POST);
+// die();
 
 require_once 'conexao.php';
 
@@ -22,6 +24,7 @@ class RelatorioRepository
     public function inserirRelatorio($dadosFormulario)
     {
 
+
         if (isset($_SESSION['idUsuario'])) {
             $idUsuario = $_SESSION['idUsuario'];
         } else {
@@ -33,8 +36,6 @@ class RelatorioRepository
         $localDois = $dadosFormulario->getLocalDois();
         $qtdKm = $dadosFormulario->getQtdKm();
         $data = $dadosFormulario->getData();
-
-
 
         $sql = "INSERT INTO km (localUm, localDois, qtdKm, data, idUsuario) 
                       VALUES 
