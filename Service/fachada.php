@@ -59,7 +59,7 @@ class Fachada
 
     public function buscarLogin($login)
     {
-        
+
         $repository = new UsuarioRepository();
         return $repository->buscarLogin($login);
     }
