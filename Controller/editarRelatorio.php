@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dadosFormulario->setData($_POST['data']) ?? '';
 }
 $fachada = new Fachada();
-$atualizar = $fachada->inserirRelatorio($dadosFormulario);
+$atualizar = $fachada->atualizarRelatorio($dadosFormulario);
 
 
 if (isset($atualizar)) {

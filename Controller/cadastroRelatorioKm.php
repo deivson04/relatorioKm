@@ -10,6 +10,7 @@ require_once '../Objeto/relatorioKm.php';
 use Service\Fachada;
 use Objeto\RelatorioDeKm;
 
+
 $dadosFormulario = new RelatorioDeKm();
 
 // Verificando se o formulário foi enviado via POST
@@ -22,9 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $idUsuario = $_SESSION['idUsuario'] ?? null;
-    if ($idUsuario === null) {
-        die("Erro: ID do usuário não encontrado na sessão.");
-    }
+
+    // if ($idUsuario === null) {
+    //     die("Erro: ID do usuário não encontrado na sessão.");
+    // }
     $dadosFormulario->setIdUsuario($idUsuario);
 }
 

@@ -24,7 +24,6 @@ class RelatorioRepository
     public function inserirRelatorio($dadosFormulario)
     {
 
-
         if (isset($_SESSION['idUsuario'])) {
             $idUsuario = $_SESSION['idUsuario'];
         } else {
@@ -40,8 +39,7 @@ class RelatorioRepository
         $sql = "INSERT INTO km (localUm, localDois, qtdKm, data, idUsuario) 
                       VALUES 
              (:localUm, :localDois, :qtdKm, :data, :idUsuario)";
-        //  var_dump($sql);
-        //  die;
+
         $stmt = $this->con->prepare($sql);
 
         $stmt->bindParam(":localUm", $localUm);
@@ -57,6 +55,7 @@ class RelatorioRepository
 
     public function atualizarRelatorio($dadosFormulario)
     {
+
         $idKm = $dadosFormulario->getIdKm();
         $localUm = $dadosFormulario->getLocalUm();
         $localDois = $dadosFormulario->getLocalDois();
@@ -106,24 +105,34 @@ class RelatorioRepository
         $dataInicio = $data->getData();
         $idUsuario = $data->getIdUsuario();
 
+        if (empty($idUsuario)) {
+            return [];
+        }
+
         // $sql = "SELECT *
         // FROM km 
         // WHERE deleted_at IS NULL 
         //     AND (:data IS NULL OR data = :data)
         // ORDER BY data DESC";
 
-        $sql = "SELECT u.idUsuario, k.localUm, k.localDois, k.qtdKm, k.data
+        $sql = "SELECT u.idUsuario, k.idKm, k.localUm, k.localDois, k.qtdKm, k.data
         FROM km k
         INNER JOIN usuarios u ON k.idUsuario = u.idUsuario
-        WHERE u.idUsuario = :idUsuario
-        AND k.deleted_at IS NULL
-        AND (:data IS NULL OR k.data = :data)
-        ORDER BY k.data DESC";
+        WHERE k.deleted_at IS NULL
+        AND k.idUsuario = :idUsuario";
+
+        if (!empty($dataInicio)) {
+            $sql .= " AND k.data = :data";
+        }
 
         $stmt = $this->con->prepare($sql);
 
-        $stmt->bindParam(":data", $dataInicio);
         $stmt->bindParam(":idUsuario", $idUsuario);
+
+        if (!empty($dataInicio)) {
+            $stmt->bindParam(":data", $dataInicio);
+        }
+
 
         $stmt->execute();
 
