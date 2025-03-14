@@ -15,8 +15,7 @@ Antes de instalar e executar o sistema, certifique-se de ter os seguintes requis
 
 1. Clone o repositório para seu ambiente local:
    ```bash
-   git clone https://github.com/deivson04
-relatorioKm.git
+   git clone https://github.com/deivson04/relatorioKm.git
    ```
 ## Estrutura do Projeto
 
