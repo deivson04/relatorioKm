@@ -19,8 +19,6 @@ if (isset($_SESSION['idUsuario']) && !empty($_SESSION['idUsuario'])) {
     $id = $_SESSION['idUsuario'];
 }
 
-
-
 echo "  <a href='../Controller/logout.php'>Sair</a>";
 
 $buscarRelatorio = new RelatorioController();
@@ -30,13 +28,15 @@ $data = new RelatorioDeKm();
 if (isset($_GET['dataInicio']) && (!empty($_GET['dataInicio']))) {
 
     $data->setData($_GET['dataInicio']);
-
-    $buscar = $buscarRelatorio->buscarRelatorio($data);
-} else {
-
-    $buscar = $buscarRelatorio->buscarRelatorio($data);
 }
 
+if (isset($_SESSION['idUsuario'])) {
+    $data->setIdUsuario($_SESSION['idUsuario']);
+} else {
+
+    echo 'Id não encontrado';
+}
+$buscar = $buscarRelatorio->buscarRelatorio($data);
 
 
 ?>
