@@ -171,7 +171,7 @@ class RelatorioRepository
                 WHERE idUsuario = :idUsuario
                 AND deleted_at IS NULL AND data BETWEEN :dataIni AND :dataFinal";
         $stmt = $this->con->prepare($sql);
-        
+
         $stmt->bindParam(":dataIni", $dataIni);
         $stmt->bindParam(":dataFinal", $dataFinal);
         $stmt->bindParam(":idUsuario", $idUsuario);

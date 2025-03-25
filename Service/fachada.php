@@ -70,5 +70,4 @@ class Fachada
         $repository = new UsuarioRepository();
         return $repository->buscarLogin($login);
     }
-    
 }
