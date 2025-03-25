@@ -21,12 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dadosFormulario->setQtdKm($_POST['qtdKm'] ?? '');
     $dadosFormulario->setData($_POST['data'] ?? '');
 
-
     $idUsuario = $_SESSION['idUsuario'] ?? null;
 
-    // if ($idUsuario === null) {
-    //     die("Erro: ID do usuário não encontrado na sessão.");
-    // }
     $dadosFormulario->setIdUsuario($idUsuario);
 }
 

@@ -159,4 +159,25 @@ class RelatorioRepository
 
         return $stmt;
     }
+
+    public function buscarData($data)
+    {
+        $dataIni = $data->getData();
+        $dataFinal = $data->getDataFinal();
+        $idUsuario = $data->getIdUsuario();
+
+        $sql = "SELECT *
+                FROM km
+                WHERE idUsuario = :idUsuario
+                AND deleted_at IS NULL AND data BETWEEN :dataIni AND :dataFinal";
+        $stmt = $this->con->prepare($sql);
+        
+        $stmt->bindParam(":dataIni", $dataIni);
+        $stmt->bindParam(":dataFinal", $dataFinal);
+        $stmt->bindParam(":idUsuario", $idUsuario);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

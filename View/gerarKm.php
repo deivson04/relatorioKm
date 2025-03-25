@@ -19,19 +19,19 @@
                 <div class="container d-flex flex-column align-items-center">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <label for="dataDe" class="col-form-label">Data Início</label>
+                            <label for="data" class="col-form-label">Data Início</label>
                         </div>
                         <div class="col-auto">
-                            <input type="date" name="dataDe" class="form-control">
+                            <input type="date" name="data" class="form-control">
                         </div>
                     </div>
 
                     <div class="row g-3 align-items-center mt-3">
                         <div class="col-auto">
-                            <label for="dataAte" class="col-form-label">Data Final</label>
+                            <label for="dataFinal" class="col-form-label">Data Final</label>
                         </div>
                         <div class="col-auto">
-                            <input type="date" name="dataAte" class="form-control">
+                            <input type="date" name="dataFinal" class="form-control">
                         </div>
                     </div>
                 </div><br>
