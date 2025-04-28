@@ -43,6 +43,13 @@ class Fachada
         return $repository->deleteRelatorio($dadosFormulario);
     }
 
+    public function buscarData($data)
+    {
+
+        $repository = new RelatorioRepository();
+        return $repository->buscarData($data);
+    }
+
     //Usuario
 
     public function inserirUsuario($usuario)
