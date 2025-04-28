@@ -35,4 +35,4 @@ if ($cadastro) {
     echo 'Erro ao cadastrar o relatório.';
 }
 
-echo "<br><br><a href='../view/home.php'>Voltar ao formulário</a>";
+echo "<br><br><a href='../view/formularioDeRelatorio.php'>Voltar ao formulário</a>";
